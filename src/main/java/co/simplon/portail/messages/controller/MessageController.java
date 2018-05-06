@@ -33,6 +33,12 @@ public class MessageController {
 		return messageService.getAllMessages();
 	}
 	
+	// Récupèrer les messages d'une tournée
+	@GetMapping("/messages/tournee/{id}")
+	public List<Message> getAllMessagesFromTournee(@PathVariable(value="id") String id) {
+		return messageService.getAllMessagesForTournee(id);
+	}
+	
 	// Récupèrer un message avec l'id indiqué dans la requète
 	@GetMapping("/message/{id}")//répond à la la requête /message/id, id étant une variable avec la méthode "Get"   
 	public Message getMessageById(@PathVariable(value="id") Long id) {

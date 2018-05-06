@@ -25,6 +25,14 @@ public class MessageService {
 	public List<Message> getAllMessages() {
 		return repo.findAll();
 	}
+	/*
+	 * récupère tous les messages d'une tournée
+	 */
+	
+	public List<Message> getAllMessagesForTournee(String idTournee){
+		return repo.findMeessagesFromTournee(idTournee);
+		
+	}
 
 	/*
 	 * récupère un message avec l'id du message en paramètre
@@ -55,8 +63,6 @@ public class MessageService {
 		//redéfinit les valeurs des attributs du message avec les info 
 		updateMessage.setTitre(messageToUpdate.getTitre());
 		updateMessage.setContenu(messageToUpdate.getContenu());
-		//messageToUpdate.setAuteur(messageToUpdate.getAuteur());
-		//messageToUpdate.setTournee(messageToUpdate.getTournee());
 
 		repo.save(updateMessage); //sauvegarde le message dans la BDD
 
