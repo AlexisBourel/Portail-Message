@@ -16,13 +16,13 @@ public class Message implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable=false, unique=true)
+    @Column(nullable=false, unique=true)//définit le nom de la colonne ainsi que les contraintes associéss
     private String titre;
 
-    @Column(nullable=false)
+    @Column(nullable=false)//définit le nom de la colonne ainsi que les contraintes associés
     private String contenu;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false)//définit le nom de la colonne ainsi que les contraintes associés
     private LocalDate date;
     
 //    @Column(nullable = false, updatable = false)

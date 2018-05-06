@@ -1,5 +1,6 @@
 package co.simplon.portail.messages.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ public class MessageService {
 	 * Crée un nouveau message a stocker dans la base de données
 	 */
 	public Message createMessage(Message message) {
+		message.setDate(LocalDate.now());// on ajoute auomatiquement la date de maintenant au message
 		return repo.save(message);
 	}
 
@@ -55,7 +57,6 @@ public class MessageService {
 		updateMessage.setContenu(messageToUpdate.getContenu());
 		//messageToUpdate.setAuteur(messageToUpdate.getAuteur());
 		//messageToUpdate.setTournee(messageToUpdate.getTournee());
-		updateMessage.setDate(messageToUpdate.getDate());
 
 		repo.save(updateMessage); //sauvegarde le message dans la BDD
 

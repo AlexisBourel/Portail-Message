@@ -51,7 +51,7 @@ public class MessageController {
 	}
 	
     // Supprimer un message
-	@DeleteMapping("/messsage/{id}")// répond à la requête /message/id avec la méthode "Delete"
+	@DeleteMapping("/message/{id}")// répond à la requête /message/id avec la méthode "Delete"
 	public void deleteMessageById(@PathVariable(value="id") Long id) {
 		messageService.deleteMessage(id);
 	}
