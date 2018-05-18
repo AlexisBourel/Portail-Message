@@ -1,0 +1,33 @@
+<div style="text-align:center">  
+  <div class="main-menu">
+		<button class="fake">1</button>
+	  <label>Choix de tournée(s)</label>
+		<button class="fake">2</button>
+  </div>
+  <div class="main-menu">
+		<button (ngClick)="refresh()" >
+      <i class="material-icons">refresh</i>
+    </button>
+		<label class="titre-menu">SITE DE FORMATION</label>
+		<button class="fake"><i class="material-icons">
+        home
+        </i></button>
+  </div>
+  
+  <form (ngSubmit)="onSubmit()">
+		<div class="liste-tournees">
+      <mat-form-field>
+        <mat-select placeholder="Selection Tournee">
+          <mat-option *ngFor="let tournee of tournees" [value]="tournee.id">
+            {{ tournee.nom }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ul class="tournees" *ngFor="let tournee of tournees" > 
+        <mat-checkbox >{{tournee.nom}} "MAT"</mat-checkbox>       
+      </ul>
+    </div>
+   
+		<button type="submit">VALIDER</button>
+  </form>
+</div> 
