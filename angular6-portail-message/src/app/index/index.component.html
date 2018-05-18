@@ -1,17 +1,3 @@
-<H1>PORTAIL MESSAGE</H1>
+<app-nav></app-nav>
+<router-outlet></router-outlet>
 
-<form (ngSubmit)="onSignIn()" class="index-form">
-  <div class="row w-100 p-3">
-    <div class="formGroup">
-      <mat-form-field>
-        <input matInput type="text" placeholder="IDENTIFIANT" required [(ngModel)]="userForm.matricule" name="matricule">
-      </mat-form-field>
-    </div>
-    <div class="formGroup">
-      <mat-form-field>
-        <input matInput type="password" placeholder="MOT DE PASSE" required [(ngModel)]="userForm.password" name="password">
-      </mat-form-field>
-    </div>  
-      <button mat-raised-button type="submit">Valider</button>
-  </div>
-</form>

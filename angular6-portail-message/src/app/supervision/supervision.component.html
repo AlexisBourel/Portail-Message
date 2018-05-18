@@ -1,17 +1,13 @@
-<mat-menu>Suppervision</mat-menu>
-
-<H1>Supervision</H1>
-<app-nav></app-nav>
-
 <div class="row">
   <div class="col-2" id="dashboard">
-    <button mat-raised-button routerLink="/supervision/accueil">ACCUEIL</button>
-    <button mat-raised-button routerLink="/supervision">GESTION</button>
-    <button mat-raised-button routerLink="/supervision" id="deconnexion">DECONNEXION</button>
+    <button class="btn-block btn-lg btn-info waves-light" routerLink="accueil">ACCUEIL</button>
+    <button class="btn-block btn-lg btn-info waves-light" routerLink="/portail-message/supervision">SUPPERVISION</button>
+    <button class="btn-block btn-lg btn-danger waves-light" routerLink="/portail-message/authentification" id="deconnexion">DECONNEXION</button>
   </div>
   <div class="col-10"> 
     
     <router-outlet></router-outlet>
   </div>
 </div>
+
 

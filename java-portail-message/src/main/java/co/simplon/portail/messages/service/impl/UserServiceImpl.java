@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User getOneByMatricule(String matricule) {
-		return repository.getOneByMatricule(matricule); 
+		return repository.getOneByMatricule(matricule).orElseThrow(() -> new ResourceNotFoundException("User", "matricule", matricule)); 
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { MessageComponent } from './message/message.component';
@@ -16,6 +17,8 @@ import { SupervisionComponent } from './supervision/supervision.component';
 import { NavComponent } from './nav/nav.component';
 import { IndexComponent } from './index/index.component';
 import { UserService } from './user/user.service';
+import { AuthentificationComponent } from './authentification/authentification.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { UserService } from './user/user.service';
     UserComponent,
     SupervisionComponent,
     NavComponent,    
-    IndexComponent
+    IndexComponent,
+    AuthentificationComponent,
+    AccueilComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -36,6 +42,7 @@ import { UserService } from './user/user.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule.forRoot(),
   ],
   providers: [ TourneeService, UserService ],
   bootstrap: [ AppComponent ]
