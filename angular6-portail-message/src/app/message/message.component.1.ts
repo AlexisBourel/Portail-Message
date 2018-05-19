@@ -15,8 +15,6 @@ export class MessageComponent implements OnInit {
   messages: Message[];
   selectedMessage: Message;
 
-  displayedColumns = ['date', 'tournee.nom','titre', 'edit', 'delete'];
-
   constructor(private messageService: MessageService) { }
 
   ngOnInit() {
@@ -26,12 +24,6 @@ export class MessageComponent implements OnInit {
   onSelect(message: Message) {
     this.selectedMessage = message;
     console.log(this.selectedMessage.titre);
-  }
-
-  onDelete(id:number) {
-    this.messageService.delete(id).subscribe(
-      () => this.loadMessages()
-    );
   }
 
   refresh(): void {    

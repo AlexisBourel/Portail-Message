@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {  MatButtonModule, MatCheckboxModule, MatDatepickerModule,MatFormFieldModule, MatIconModule, MatNativeDateModule, MatInputModule, MatSelect, MatSelectModule, MatMenuModule } from '@angular/material';
+import {  MatButtonModule, MatCheckboxModule, MatDatepickerModule,MatFormFieldModule, MatIconModule, MatNativeDateModule, MatInputModule, MatSelect, MatSelectModule, MatMenuModule, MatTableModule, MatPaginatorModule } from '@angular/material';
 
 @NgModule({
   imports: [ 
@@ -16,6 +16,8 @@ import {  MatButtonModule, MatCheckboxModule, MatDatepickerModule,MatFormFieldMo
       MatSelectModule,
       MatMenuModule,
       MatButtonModule,
+      MatTableModule,
+      MatPaginatorModule
  ],
   exports: [ 
       MatButtonModule,
@@ -27,7 +29,9 @@ import {  MatButtonModule, MatCheckboxModule, MatDatepickerModule,MatFormFieldMo
       MatInputModule,
       MatSelectModule,
       MatMenuModule,
-      MatButtonModule
+      MatButtonModule,
+      MatTableModule,
+      MatPaginatorModule
 
 ]
 })

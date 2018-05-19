@@ -1,0 +1,32 @@
+<h2>Liste des Messages</h2>
+<mat-form-field class="filre">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+  </mat-form-field>
+<ul class="messages">
+  <li *ngFor="let message of messages"
+    [class.selected]="message === selectedMessage"
+    (click)="onSelect(message)">
+    <div>
+    <span class="badge">{{message.tournee.nom}}</span>{{message.date}} {{message.titre}} 
+  </div>
+  <div *ngIf="selectedMessage === message" ><h2>{{ selectedMessage.titre | uppercase }} Details</h2>
+    <div><span>id: </span>{{selectedMessage.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="selectedMessage.titre" placeholder="name">
+      </label>
+    </div></div>
+  </li>
+</ul>
+ 
+<div *ngIf="selectedMessage">
+ 
+  <h2>{{ selectedMessage.titre | uppercase }} Details</h2>
+  <div><span>id: </span>{{selectedMessage.id}}<span>Tournee: </span>{{selectedMessage.tournee.nom}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedMessage.titre" placeholder="name">
+    </label>
+  </div>
+ 
+</div>

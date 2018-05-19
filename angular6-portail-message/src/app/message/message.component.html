@@ -1,1 +1,37 @@
-<H1>MESSAGE COMPONENT</H1>
+<H1>Liste des messages</H1>
+<div class="example-container">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+    </mat-form-field>
+  </div>
+  <mat-table #table [(dataSource)]="dataSource">
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let message"> {{ message.date}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="tournee.nom">
+      <mat-header-cell *matHeaderCellDef> Tournée </mat-header-cell>
+      <mat-cell *matCellDef="let message"> {{ message.tournee.nom}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="titre">
+      <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
+      <mat-cell *matCellDef="let message"> {{ message.titre}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let message">
+        <button class="btn" routerLink="{{message.id}}"><i class="material-icons">create</i></button>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let message">
+        <button class="btn" (click)="onDelete(message.id)"><i class="material-icons">clear</i></button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="5" [pageSize]="10" [pageSizeOptions]="[10, 20, 30]">
+  </mat-paginator>

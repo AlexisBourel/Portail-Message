@@ -12,20 +12,12 @@ import { Tournee } from './tournee';
 export class TourneeComponent implements OnInit {
   
   tournees: Tournee[];
-
   selectedTournee: Tournee;
 
-  
   constructor(private tourneeService: TourneeService) { }
 
   ngOnInit() {
     this.getTournees();
-  }
-
-  onSubmit() {
-
-    console.log(this.selectedTournee)
-    
   }
 
   getTournees(): void {
@@ -33,10 +25,14 @@ export class TourneeComponent implements OnInit {
         .subscribe(tournees => this.tournees = tournees);
   }
 
-  refresh(): void {
-    
+  refresh(): void {    
     this.getTournees();
     console.log('data refresh');
+  }
+
+  onSelect(tournee: Tournee) {
+    this.selectedTournee = tournee;
+    console.log(this.selectedTournee.nom);
   }
 
 }

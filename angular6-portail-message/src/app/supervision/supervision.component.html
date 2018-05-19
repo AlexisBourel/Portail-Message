@@ -1,13 +1,12 @@
 <div class="row">
   <div class="col-2" id="dashboard">
-    <button class="btn-block btn-lg btn-info waves-light" routerLink="accueil">ACCUEIL</button>
-    <button class="btn-block btn-lg btn-info waves-light" routerLink="/portail-message/supervision">SUPPERVISION</button>
-    <button class="btn-block btn-lg btn-danger waves-light" routerLink="/portail-message/authentification" id="deconnexion">DECONNEXION</button>
+    <button class="btn-block btn-lg btn-info waves-light" routerLink="accueil">Accueil</button>
+    <button class="btn-block btn-lg btn-info waves-light" routerLink="tournee">Tournees</button>
+    <button class="btn-block btn-lg btn-info waves-light" routerLink="message">Messages</button>
+    <button class="btn-block btn-lg btn-danger waves-light" routerLink="/portail-message/authentification" id="deconnexion">Deconnexion</button>
   </div>
-  <div class="col-10"> 
-    
+  <div class="col-10">
     <router-outlet></router-outlet>
+
   </div>
 </div>
-
-

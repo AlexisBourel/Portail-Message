@@ -3,7 +3,6 @@ package co.simplon.portail.messages.model;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -29,13 +28,12 @@ public class Message implements Serializable {
     @Column(nullable = false, updatable = false)//définit le nom de la colonne ainsi que les contraintes associés
     private Date date;
     
-    @ManyToOne(fetch = FetchType.LAZY)//un facteur peux écrire plusieurs messages
+    @ManyToOne//un facteur peux écrire plusieurs messages
     @JoinColumn(name = "facteur_id",nullable = false, updatable = false)
     private User auteur;
     
-    @ManyToOne(fetch = FetchType.LAZY)//une tournée avoir plusieurs messages
+    @ManyToOne//une tournée avoir plusieurs messages
     @JoinColumn(name="tournee_id",nullable = false, updatable = false)
-    @JsonIgnore
     private Tournee tournee;
 
 	public long getId() {

@@ -5,7 +5,6 @@ export class Tournee {
     objets: number;
     entreprises: number;
     prestations: number;
-    pickup: number;
-    checked: boolean;   
+    pickup: number;   
 
 }

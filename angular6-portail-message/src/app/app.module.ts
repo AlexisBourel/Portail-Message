@@ -19,6 +19,7 @@ import { IndexComponent } from './index/index.component';
 import { UserService } from './user/user.service';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { MessageService } from './message/message.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { AccueilComponent } from './accueil/accueil.component';
     ReactiveFormsModule,
     NgbModule.forRoot(),
   ],
-  providers: [ TourneeService, UserService ],
+  providers: [ TourneeService, UserService, MessageService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

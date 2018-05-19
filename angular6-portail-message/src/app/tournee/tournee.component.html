@@ -1,19 +1,23 @@
-<div style="text-align:center">  
+<div style="text-align:center">
   <div class="main-menu">
-	  <label>Choix de tournée(s)</label>
+    <label>Choix de tournée(s)</label>
   </div>
   <div class="main-menu">
-		<button (ngClick)="refresh()" >
+    <button (ngClick)="refresh()">
       <i class="material-icons">refresh</i>
     </button>
-		<label class="titre-menu">RUNGIS PPDC</label>
-		<button class="fake"><i class="material-icons">
+    <label class="titre-menu">RUNGIS PPDC</label>
+    <button class="fake">
+      <i class="material-icons">
         home
-        </i></button>
+      </i>
+    </button>
   </div>
-		<div class="liste-tournees">
-      <ul class="tournees" *ngFor="let tournee of tournees" > 
-        <mat-checkbox >{{tournee.nom}}</mat-checkbox>       
-      </ul>
-    </div>
-</div> 
+  <div class="liste-tournees">
+    <ul class="tournees">
+      <li *ngFor="let tournee of tournees" [class.selected]="tournee === selectedTournee" (click)="onSelect(tournee)">
+        <span>{{tournee.nom}}</span>
+      </li>
+    </ul>
+  </div>
+</div>

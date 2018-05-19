@@ -6,15 +6,18 @@ import { IndexComponent } from './index/index.component';
 import { NavComponent } from './nav/nav.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { MessageComponent } from './message/message.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'portail-message/authentification', pathMatch: 'full' },
   { path: 'portail-message', redirectTo: 'portail-message/authentification', pathMatch: 'full' },
   { path: 'portail-message', component: IndexComponent, children : [
-    { path: 'authentification', component: AuthentificationComponent},
-    { path: 'accueil', component: AccueilComponent},
+    { path: 'authentification', component: AuthentificationComponent },
+    { path: 'accueil', component: AccueilComponent },
     { path: 'supervision', component: SupervisionComponent, children : [
-      { path: 'accueil', component: AccueilComponent},
+      { path: 'accueil', component: AccueilComponent },
+      { path: 'tournee', component: TourneeComponent },
+      { path: 'message', component: MessageComponent },
     ]}
   ]},  
 ]
