@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from './user';
+import { User } from '../models/user';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -46,6 +46,13 @@ export class UserService {
     const response = this.http.post<User>(`${this.userUrl}/check`, userForm);
     console.log('user.service::checkLogin matricule/password with matricule=' + userForm.matricule + " done");
     return response;
+  }
+
+  public create(userForm: User): Observable<User> {
+    console.log('user.service::create called');
+    const result = this.http.post<User>(this.userUrl, this.userForm, httpOptions);
+    console.log('user.service::create done');
+    return result;
   }
 
   public saveCurrentUserInSessionStorage(user: User): void {

@@ -23,9 +23,9 @@ import co.simplon.portail.message.service.MessageService;
 @RestController
 @RequestMapping("/message")
 public class MessageController {
-	/* 
-	 * Classe qui gére les intéractions avec le front et les services	 *  
-	 * */
+	/*
+	 * Classe qui gére les intéractions avec le front et les services *
+	 */
 
 	@Autowired
 	MessageService messageService;
@@ -34,33 +34,39 @@ public class MessageController {
 	public ResponseEntity<List<Message>> getAll() {
 		return ResponseEntity.ok().body(messageService.getAll());
 	}
-	
-	@GetMapping("/{id}") 
-	public ResponseEntity<?> getOneById(@PathVariable(value="id") long id) {
+
+	@GetMapping("/{id}")
+	public ResponseEntity<?> getOneById(@PathVariable(value = "id") long id) {
 		return ResponseEntity.ok().body(messageService.getOneById(id));
 	}
 
 	@PostMapping
-	public ResponseEntity<?> create(@Valid @RequestBody Message message) { 
-	    return ResponseEntity.ok().body(messageService.create(message));
-	}   
-   
+	public ResponseEntity<?> create(@Valid @RequestBody Message message) {
+		return ResponseEntity.ok().body(messageService.create(message));
+	}
+
 	@PutMapping("/{id}")
-	public ResponseEntity<?> update(@PathVariable(value ="id") long id, @Valid @RequestBody Message messageForm) {
+	public ResponseEntity<?> update(@PathVariable(value = "id") long id, @Valid @RequestBody Message messageForm) {
+		System.out.println("Message Controller Put mapping entrée");
 		Message messageToUpdate = messageService.getOneById(id);
-		messageToUpdate.setAutor(messageForm.getAutor());
 		messageToUpdate.setContent(messageForm.getContent());
-		messageToUpdate.setExpiryDate(messageForm.getExpiryDate());
 		messageToUpdate.setTitle(messageForm.getTitle());
 		messageToUpdate.setTour(messageForm.getTour());
-		return ResponseEntity.ok().body(messageService.update(messageToUpdate));
+		messageToUpdate.setUpdateBy(messageForm.getUpdateBy());
+		messageToUpdate.setType(messageForm.getType());
+		if (messageForm.getExpiryDate() != null) {
+			messageToUpdate.setExpiryDate(messageForm.getExpiryDate());
+		}
+		ResponseEntity<Message> result = ResponseEntity.ok().body(messageService.update(messageToUpdate));
+		System.out.println("Message controller put mapping sortie");
+		return result;
 	}
-	
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> delete(@PathVariable(value="id") Long id) {
+	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
 		Message messageToDelete = messageService.getOneById(id);
 		messageService.delete(messageToDelete);
 		return ResponseEntity.ok().build();
 	}
-	
+
 }

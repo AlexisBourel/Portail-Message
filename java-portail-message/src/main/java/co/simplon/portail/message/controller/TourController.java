@@ -41,11 +41,8 @@ public class TourController {
 	@PutMapping("/{id}")
 	public Tour update(@PathVariable(value="id") long id, @Valid @RequestBody Tour tourForm) {		
 		Tour tourToUpdate = tourService.getOneById(id);
-		if (tourToUpdate.getAgent() == null) { //un seul facteur par jour, 
-			tourToUpdate.setAgent(tourForm.getAgent());
+		tourToUpdate.setName(tourForm.getName());
 			return tourService.update(tourToUpdate);
-		}
-		else return tourService.update(tourForm);
 	}
 	
 }

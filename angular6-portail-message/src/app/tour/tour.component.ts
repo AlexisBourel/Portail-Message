@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormGroup, FormBuilder } from '@angular/forms';
+import { Tour } from '../models/tour';
+import { TourService } from '../services/tour.service';
 
-import { TourService } from './tour.service';
-import { Tour } from './tour';
+
 
 @Component({
   selector: 'app-tour',

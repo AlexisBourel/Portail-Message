@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,7 +21,7 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(nullable=false, unique=true, length=7)
+	@Column(nullable=false, unique=true, length=7, updatable= false)
 	private String matricule; //ex: pabc123
 	@Column(nullable=false, length=25)
 	private String lastname;
@@ -32,8 +31,6 @@ public class User implements Serializable{
 	private String password;
 	@Column(length=10)
 	private Long phone;
-	@OneToOne
-	private Tour tour;
 	@Column(nullable=false, length=15)
 	private String function;
 	
@@ -76,14 +73,6 @@ public class User implements Serializable{
 
 	public void setPhone(Long phone) {
 		this.phone = phone;
-	}
-
-	public Tour getTour() {
-		return tour;
-	}
-
-	public void setTour(Tour tour) {
-		this.tour = tour;
 	}
 
 	public String getFunction() {

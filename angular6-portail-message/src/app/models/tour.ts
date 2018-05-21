@@ -1,4 +1,5 @@
-import { User } from "../user/user";
+import { User } from "./user";
+
 
 export class Tour {    
     id: number;

@@ -24,7 +24,7 @@ public class Message extends AuditModel {
     @Column
     private Date expiryDate;        
     @ManyToOne
-    @JoinColumn(name="tour_id",nullable = false, updatable = false)
+    @JoinColumn(name="tour_id",nullable = false)
     private Tour tour;
     @Column(nullable=false, length=30)
     private String type;    

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from '../message';
-import { MessageService } from '../message.service';
-import { TourService } from '../../tour/tour.service';
-import { Tour } from '../../tour/tour';
+import { Message } from '../../models/message';
+import { Tour } from '../../models/tour';
+import { MessageService } from '../../services/message.service';
+import { TourService } from '../../services/tour.service';
 
 @Component({
   selector: 'app-create-message',
@@ -15,6 +15,7 @@ export class CreateMessageComponent implements OnInit {
   submitted = false;
   valid = true;
   error = false;
+  tours: Tour[];
 
   types = [
     { value: 'Incident', viewValue: 'Incident' },
@@ -24,7 +25,7 @@ export class CreateMessageComponent implements OnInit {
     { value: 'Contact', viewValue: 'Contact' },
     { value: 'Autre', viewValue: 'Autre' },
   ]
-  tours: Tour[];
+  
 
   constructor(private messageService: MessageService, private tourService: TourService) {
     console.log("create-message.component::constructor");

@@ -11,3 +11,7 @@
     color: red;
     font-size: 20px;
 }
+
+mat-header-cell{
+    font-size: 16px;
+}

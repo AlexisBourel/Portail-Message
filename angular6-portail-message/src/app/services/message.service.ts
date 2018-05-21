@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Message } from './message';
+
 import { Observable } from 'rxjs';
+import { Message } from '../models/message';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,15 +22,13 @@ export class MessageService {
     console.log("message.service::getAll succes");
     return result;
   }
-  
-  public getOneById(id: number): Observable<Message> {
-    console.log("message.service::get Message with id=" + id + " called");
-    const url = this.messageUrl + "/" + id;
-    const result =  this.http.get<Message>(url);
-    console.log("message.service::get Message with id=" + id + " succes");
-    return result;
-  }
 
+  getMessage(id: number): Observable<Message> {
+    console.log("affaire.service::getAffaire with id=" + id);
+    const url = `${this.messageUrl}/${id}`;
+    return this.http.get<Message>(url);
+  }
+  
   public create(message: Message): Observable<Message>{
     console.log("message.service:::create Message called");
     message.autor = JSON.parse(sessionStorage.getItem('currentUser'));    
@@ -41,9 +40,10 @@ export class MessageService {
   public update(id: number, message : Message): Observable<any>{
     console.log("message.service:::update Message called");
     message.updateBy = JSON.parse(sessionStorage.getItem('currentUser'));
-    console.log("message.service:::update Message user set");
+    console.log("message.service:::update Message user set : " + message.updateBy.matricule);
     const url = this.messageUrl + "/" + id;
-    const result =  this.http.put(url, message, httpOptions);    
+    const result =  this.http.put(url, message, httpOptions);  
+    console.log("url : " + url);  
     console.log("message.service:::update Message done");
     return result; 
     

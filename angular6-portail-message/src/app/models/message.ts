@@ -1,5 +1,6 @@
-import { User } from "../user/user";
-import { Tour } from "../tour/tour";
+import { User } from "./user";
+import { Tour } from "./tour";
+
 
 export class Message {    
     id: number;
@@ -9,6 +10,6 @@ export class Message {
     autor: User;
     tour: Tour;
     updateAt: Date;
-    updateBy: Date;
-    dateExpiration: Date;
+    updateBy: User;
+    expiryDate: Date;
 }

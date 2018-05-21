@@ -12,15 +12,19 @@ import { TourComponent } from './tour/tour.component';
 import { UserComponent } from './user/user.component';
 import { MaterialAppModule } from './ng6material.module';
 import { AppRoutingModule } from './app-routing.module';
-import { TourService } from './tour/tour.service';
 import { SupervisionComponent } from './supervision/supervision.component';
 import { NavComponent } from './nav/nav.component';
 import { IndexComponent } from './index/index.component';
-import { UserService } from './user/user.service';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { AccueilComponent } from './accueil/accueil.component';
-import { MessageService } from './message/message.service';
 import { CreateMessageComponent } from './message/create-message/create-message.component';
+import { UpdateMessageComponent } from './message/update-message/update-message.component';
+import { MessageService } from './services/message.service';
+import { TourService } from './services/tour.service';
+import { UserService } from './services/user.service';
+import { ListUserComponent } from './user/list-user/list-user.component';
+import { CreateUserComponent } from './user/create-user/create-user.component';
+import { UpdateUserComponent } from './user/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { CreateMessageComponent } from './message/create-message/create-message.
     IndexComponent,
     AuthentificationComponent,
     AccueilComponent,
-    CreateMessageComponent
+    CreateMessageComponent,
+    UpdateMessageComponent,
+    ListUserComponent,
+    CreateUserComponent,
+    UpdateUserComponent
     
   ],
   imports: [

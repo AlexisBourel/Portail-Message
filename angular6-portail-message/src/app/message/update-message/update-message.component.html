@@ -1,0 +1,65 @@
+<div class="center">
+    <h3>Modifier Message</h3>
+  
+    <div [hidden]="submitted">
+      <form (ngSubmit)="updateMessage()" *ngIf="message">
+        <div class="formGroup">
+          <mat-form-field>
+            <input matInput placeholder="Titre" [(ngModel)]="message.title" name="title" required>
+          </mat-form-field>
+        </div>
+        <div class="formGroup">
+          <mat-form-field>
+            <mat-select placeholder="Type" [(ngModel)]="message.type" name="type" required>
+              <mat-option *ngFor="let type of types" [value]="type.value">
+                {{type.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="formGroup">
+          <mat-form-field>
+            <mat-select class="selectpicker" placeholder="Tournée" [(ngModel)]="message.tour" name="tour" required>
+              <mat-option *ngFor="let tour of tours" [value]="tour">
+                {{tour.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="formGroup">
+          <mat-form-field>
+            <textarea matInput placeholder="Contenu" [(ngModel)]="message.content" name="content" required></textarea>
+          </mat-form-field>
+        </div>
+        <div class="formGroup">
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker2" placeholder="Date d'Expiration" [(ngModel)]="message.expiryDate" name="expiryDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <mat-hint align="end">mm/jj/aaaa</mat-hint>
+          </mat-form-field>
+        </div>
+        <div [hidden]="valid">
+          <p class="error">Erreur lors de la validation du formulaire veuillez remplir les champs requis</p>
+        </div>
+        <div [hidden]="!error">
+          <p class="error">Erreur lors de la validation du formulaire, une message portant ce nom existe déjà</p>
+        </div>
+        <p>* Champs requis</p>
+        <div class="buttonGroup">
+          <button mat-raised-button type="submit">Valider</button>
+          <button mat-raised-button routerLink="/portail-message/supervision/message">Annuler</button>
+        </div>      
+      </form>
+    </div>
+  
+    <div [hidden]="!submitted">
+      <div class="formGroup">
+        <h4>Création du Message réussi</h4>
+      </div>
+      <div class="message">
+        <button mat-raised-button routerLink="/portail-message/supervision/message">Liste des Messages</button>
+      </div>
+    </div>
+  </div>
+  

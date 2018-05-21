@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MessageService } from './message.service';
-import { Message } from './message';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { Location } from '@angular/common';
+import { MessageService } from '../services/message.service';
+import { Message } from '../models/message';
 
 @Component({
   selector: 'app-message',
@@ -24,6 +24,16 @@ export class MessageComponent implements OnInit {
     this.loadMessages();
   }
 
+  private loadMessages(){
+    this.messageService.getAll().subscribe(
+      data => { this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      console.log(data);
+      console.log("affaires loaded");
+     }
+    );
+  }
+
   goBack() {
     console.log('message component go back');
     this.location.back();
@@ -36,29 +46,8 @@ export class MessageComponent implements OnInit {
   }
 
   refresh(): void {    
-    this.getMessages();
+    this.loadMessages();
     console.log('data refresh');
   }
-
-  getMessages(){
-    this.messageService.getAll()
-        .subscribe(messages => this.messages = messages);
-  };
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-   this.dataSource.filter = filterValue;
-  }
-
-  loadMessages(){
-    this.messageService.getAll().subscribe(
-      data => { this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-      console.log(data);
-      console.log("affaires loaded");
-     }
-    );
-  }
-
+ 
 }

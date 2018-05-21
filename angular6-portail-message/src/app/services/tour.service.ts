@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
-import { Tour } from './tour';
 import { Observable } from 'rxjs';
+import { Tour } from '../models/tour';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

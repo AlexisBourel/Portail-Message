@@ -47,10 +47,10 @@
       </div>
       <p>* Champs requis</p>
       <div class="buttonGroup">
-        <button type="submit">Valider</button>
+        <button mat-raised-button type="submit">Valider</button>
+        <button mat-raised-button routerLink="back">Annuler</button>
       </div>      
     </form>
-    <button routerLink="back">Annuler</button>
   </div>
 
   <div [hidden]="!submitted">
@@ -59,7 +59,7 @@
     </div>
     <div class="message">
       <button mat-raised-button (click)="reload()">Nouveau Message</button>
-      <button mat-raised-button (click)="goBack()">Liste des Messages</button>
+      <button mat-raised-button routerLink="back">Liste des Messages</button>
     </div>
   </div>
 </div>

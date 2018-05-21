@@ -17,11 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.simplon.portail.message.exception.ResourceNotFoundException;
 import co.simplon.portail.message.model.User;
 import co.simplon.portail.message.service.UserService;
-
-
 
 @RestController
 @RequestMapping("/user")
@@ -69,7 +66,6 @@ public class UserController {
 		userToUpdate.setPassword(userForm.getPassword());
 		userToUpdate.setPhone(userForm.getPhone());
 		userToUpdate.setFirstname(userForm.getFirstname());
-		userToUpdate.setTour(userForm.getTour());
 		return ResponseEntity.ok().body(userService.update(userToUpdate));
 	}
 	

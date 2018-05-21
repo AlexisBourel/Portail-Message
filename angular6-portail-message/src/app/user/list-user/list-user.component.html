@@ -1,0 +1,48 @@
+<H1 class="center">
+  Liste des users</H1>
+<div class="center">
+  <button class="btn" routerLink="../nouveau">
+    <i class="material-icons">add</i>Nouvel Utilisateur</button>
+  <mat-table #table [(dataSource)]="dataSource">
+    <ng-container matColumnDef="matricule">
+      <mat-header-cell *matHeaderCellDef>Matricule</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user.matricule}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="firstname">
+      <mat-header-cell *matHeaderCellDef> prénom </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user.firstname}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastname">
+      <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user.lastname}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="function">
+      <mat-header-cell *matHeaderCellDef> Fonction </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user.function}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef> Téléphone </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user.phone}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <button class="btn" routerLink="modifier/{{user.id}}">
+          <i class="material-icons">create</i>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <button class="btn" (click)="onDelete(user.id)">
+          <i class="material-icons">clear</i>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="5" [pageSize]="10" [pageSizeOptions]="[10, 20, 30]">
+  </mat-paginator>
+</div>
