@@ -1,0 +1,23 @@
+<div class = "center">
+  <div class="main-menu">
+    <label>Choix de tournée(s)</label>
+  </div>
+  <div class="main-menu">
+    <button (ngClick)="refresh()">
+      <i class="material-icons">refresh</i>
+    </button>
+    <label class="titre-menu">RUNGIS PPDC</label>
+    <button class="fake">
+      <i class="material-icons">
+        home
+      </i>
+    </button>
+  </div>
+  <div class="liste-tours">
+    <ul class="tours">
+      <li *ngFor="let tour of tours" [class.selected]="tour === selectedTour" (click)="onSelect(tour)">
+        <span>{{tour.name}}</span>
+      </li>
+    </ul>
+  </div>
+</div>

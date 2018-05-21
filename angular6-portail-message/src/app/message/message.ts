@@ -1,13 +1,14 @@
 import { User } from "../user/user";
-import { Tournee } from "../tournee/tournee";
+import { Tour } from "../tour/tour";
 
-export class Message {
-    
+export class Message {    
     id: number;
-    titre: String;
-    contenu: String;
-    date: Date;
-    auteur: User;
-    tournee: Tournee;
-
+    title: String;
+    content: String;
+    createdAt: Date;
+    autor: User;
+    tour: Tour;
+    updateAt: Date;
+    updateBy: Date;
+    dateExpiration: Date;
 }

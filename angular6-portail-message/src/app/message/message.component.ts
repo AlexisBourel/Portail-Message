@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MessageService } from './message.service';
 import { Message } from './message';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-message',
@@ -15,17 +16,17 @@ export class MessageComponent implements OnInit {
   messages: Message[];
   selectedMessage: Message;
 
-  displayedColumns = ['date', 'tournee.nom','titre', 'edit', 'delete'];
+  displayedColumns = ['createdAt', 'tour.name','type','title', 'edit', 'delete'];
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService, private location: Location) { }
 
   ngOnInit() {
     this.loadMessages();
   }
 
-  onSelect(message: Message) {
-    this.selectedMessage = message;
-    console.log(this.selectedMessage.titre);
+  goBack() {
+    console.log('message component go back');
+    this.location.back();
   }
 
   onDelete(id:number) {

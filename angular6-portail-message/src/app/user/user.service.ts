@@ -48,4 +48,15 @@ export class UserService {
     return response;
   }
 
+  public saveCurrentUserInSessionStorage(user: User): void {
+    sessionStorage.setItem('currentUser', JSON.stringify(user));
+  }
+
+  public getCurrentUserFromSessionStorage(): User {
+    return JSON.parse(sessionStorage.getItem('currentUser'));
+  } 
+  
+  public removeCurrentUserFromSessionStorage(): void {
+    sessionStorage.removeItem('currentUser');
+  }
 }

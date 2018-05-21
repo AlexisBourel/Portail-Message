@@ -1,22 +1,23 @@
-<H1>Liste des messages</H1>
+<H1 class = "center" >Liste des messages</H1>
 <div class="example-container">
-  <div class="example-header">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
-    </mat-form-field>
+  <div class = "center">    
+    <button class="btn" routerLink="create"><i class="material-icons">add</i>Nouveau Message</button>
   </div>
   <mat-table #table [(dataSource)]="dataSource">
-    <ng-container matColumnDef="date">
+    <ng-container matColumnDef="createdAt">
       <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
-      <mat-cell *matCellDef="let message"> {{ message.date}} </mat-cell>
+      <mat-cell *matCellDef="let message"> {{ message.createdAt}} </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="tournee.nom">
+    <ng-container matColumnDef="tour.name">
       <mat-header-cell *matHeaderCellDef> Tournée </mat-header-cell>
-      <mat-cell *matCellDef="let message"> {{ message.tournee.nom}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="titre">
+      <mat-cell *matCellDef="let message"> {{ message.tour.name}} </mat-cell>
+    </ng-container><ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+        <mat-cell *matCellDef="let message"> {{ message.type}} </mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
-      <mat-cell *matCellDef="let message"> {{ message.titre}} </mat-cell>
+      <mat-cell *matCellDef="let message"> {{ message.title}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>

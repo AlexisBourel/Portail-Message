@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user/user.service';
+import { User } from '../user/user';
 
 @Component({
   selector: 'app-accueil',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccueilComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
+
+  currentUser: User;
 
   ngOnInit() {
+    this.currentUser = this.userService.getCurrentUserFromSessionStorage();
   }
 
 }

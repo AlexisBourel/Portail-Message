@@ -2,10 +2,10 @@ export class User {
 
     id: number;
     matricule: String;
-    nom: String;
-    prenom: String;
+    lastName: String;
+    firstName: String;
     password: String;
     phone: number;
-    fonction: String;
+    function: String;
     
 }

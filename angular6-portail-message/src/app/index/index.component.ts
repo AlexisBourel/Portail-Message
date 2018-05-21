@@ -33,11 +33,11 @@ export class IndexComponent implements OnInit {
           (response) => {
             this.userDb = response;
             console.log('check succes ');
-            console.log('userDb fonction : ' + this.userDb.fonction);
-            if (this.userDb.fonction === "Administrateur") {              
+            console.log('userDb fonction : ' + this.userDb.function);
+            if (this.userDb.function === "Administrateur") {              
               this.goToSupervision();
             } else {
-              this.goToSelectTournees();
+              this.goToSelectTours();
             }
           },
           (error) => {
@@ -55,10 +55,10 @@ export class IndexComponent implements OnInit {
     this.router.navigate(['/supervision']);
   };
 
-  goToSelectTournees(){
+  goToSelectTours(){
     console.log('Administrateur  non détécté');
-    console.log('redirect to Tournee Selection');
-    this.router.navigate(['/select-tournee']);
+    console.log('redirect to Tour Selection');
+    this.router.navigate(['/select-tour']);
   }
 
   getUsers() {

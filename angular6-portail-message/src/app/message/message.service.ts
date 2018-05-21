@@ -16,19 +16,44 @@ export class MessageService {
   private messageUrl = 'http://localhost:8080/message'
 
    public getAll(): Observable<Message[]> {
-    console.log("message.service::getAll");
-    return this.http.get<Message[]>(this.messageUrl);
+    console.log("message.service::getAll called");
+    const result = this.http.get<Message[]>(this.messageUrl);
+    console.log("message.service::getAll succes");
+    return result;
   }
   
   public getOneById(id: number): Observable<Message> {
-    console.log("message.service::get Message with id=" + id);
-    const url = `${this.messageUrl}/${id}`;
-    return this.http.get<Message>(url);
+    console.log("message.service::get Message with id=" + id + " called");
+    const url = this.messageUrl + "/" + id;
+    const result =  this.http.get<Message>(url);
+    console.log("message.service::get Message with id=" + id + " succes");
+    return result;
+  }
+
+  public create(message: Message): Observable<Message>{
+    console.log("message.service:::create Message called");
+    message.autor = JSON.parse(sessionStorage.getItem('currentUser'));    
+    const result =  this.http.post<Message>(this.messageUrl, message, httpOptions);
+    console.log("message.service:::create Message succes");
+    return result;
+  }
+
+  public update(id: number, message : Message): Observable<any>{
+    console.log("message.service:::update Message called");
+    message.updateBy = JSON.parse(sessionStorage.getItem('currentUser'));
+    console.log("message.service:::update Message user set");
+    const url = this.messageUrl + "/" + id;
+    const result =  this.http.put(url, message, httpOptions);    
+    console.log("message.service:::update Message done");
+    return result; 
+    
   }
 
   public delete(id: number): Observable<Message> {
-    console.log("message.service::get Message with id=" + id);
-    const url = `${this.messageUrl}/${id}`;
-    return this.http.delete<Message>(url);
+    console.log("message.service::delete Message with id=" + id + " called");
+    const url = this.messageUrl + "/" + id;
+    const result = this.http.delete<Message>(url);
+    console.log("message.service::delete Message with id=" + id + " succes");
+    return result;
   }
 }

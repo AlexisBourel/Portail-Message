@@ -33,11 +33,12 @@ export class AuthentificationComponent implements OnInit {
           (response) => {
             this.userDb = response;
             console.log('check succes ');
-            console.log('userDb fonction : ' + this.userDb.fonction);
-            if (this.userDb.fonction === "Administrateur") {              
+            console.log('userDb fonction : ' + this.userDb.function);
+            this.userService.saveCurrentUserInSessionStorage(this.userDb);
+            if (this.userDb.function === "Administrateur") {              
               this.goToSupervision();
             } else {
-              this.goToSelectTournees();
+              this.goToSelectTours();
             }
           },
           (error) => {
@@ -55,9 +56,9 @@ export class AuthentificationComponent implements OnInit {
     this.router.navigate(['portail-message/supervision']);
   };
 
-  goToSelectTournees(){
+  goToSelectTours(){
     console.log('Administrateur  non détécté');
-    console.log('redirect to Tournee Selection');
+    console.log('redirect to Tour Selection');
     this.router.navigate(['portail-message/accueil']);
   }
 
