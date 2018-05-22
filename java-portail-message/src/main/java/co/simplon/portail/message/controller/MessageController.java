@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.portail.message.model.Message;
 import co.simplon.portail.message.service.MessageService;
+import co.simplon.portail.message.service.MockService;
 
 @CrossOrigin
 @RestController
@@ -29,10 +30,17 @@ public class MessageController {
 
 	@Autowired
 	MessageService messageService;
+	@Autowired
+	MockService mockService;
 
 	@GetMapping
 	public ResponseEntity<List<Message>> getAll() {
-		return ResponseEntity.ok().body(messageService.getAll());
+		List<Message> result = messageService.getAll();
+		if (result.isEmpty()) {
+			mockService.populateDbWithMockedData();
+			result = messageService.getAll();
+		}
+		return ResponseEntity.ok().body(result);
 	}
 
 	@GetMapping("/{id}")

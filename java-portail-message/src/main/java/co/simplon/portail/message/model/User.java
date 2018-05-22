@@ -30,7 +30,7 @@ public class User implements Serializable{
 	@Column(nullable=false, length=25)
 	private String password;
 	@Column(length=10)
-	private Long phone;
+	private String phone;
 	@Column(nullable=false, length=15)
 	private String function;
 	
@@ -67,11 +67,11 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	public Long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

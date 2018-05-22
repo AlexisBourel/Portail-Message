@@ -55,6 +55,16 @@ export class UserService {
     return result;
   }
 
+  public update(id: number, user : User): Observable<any>{
+    console.log("user.service:::update User called");
+    const url = this.userUrl + "/" + id;
+    const result =  this.http.put(url, user, httpOptions);  
+    console.log("url : " + url);  
+    console.log("user.service:::update User done");
+    return result; 
+    
+  }
+
   public saveCurrentUserInSessionStorage(user: User): void {
     sessionStorage.setItem('currentUser', JSON.stringify(user));
   }

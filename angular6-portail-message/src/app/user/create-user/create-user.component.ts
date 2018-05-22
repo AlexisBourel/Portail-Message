@@ -48,18 +48,18 @@ export class CreateUserComponent implements OnInit {
   private formValidation(): void {
     if (  
         this.user.matricule == null ||
-        this.user.firstName == null ||
-        this.user.lastName == null ||
+        this.user.firstname == null ||
+        this.user.lastname == null ||
         this.user.function == null  ) {
           this.valid = false;
           console.log( 'this.user.matricule = ' + this.user.matricule);
-          console.log( 'this.user.firstname = ' + this.user.firstName);
-          console.log( 'this.user.lastname = ' + this.user.lastName);
+          console.log( 'this.user.firstname = ' + this.user.firstname);
+          console.log( 'this.user.lastname = ' + this.user.lastname);
           console.log( 'this.user.function = ' + this.user.function);
         } else {
           console.log( 'this.user.matricule = ' + this.user.matricule);
-          console.log( 'this.user.firstname = ' + this.user.firstName);
-          console.log( 'this.user.lastname = ' + this.user.lastName);
+          console.log( 'this.user.firstname = ' + this.user.firstname);
+          console.log( 'this.user.lastname = ' + this.user.lastname);
           console.log( 'this.user.function = ' + this.user.function);
           this.valid = true;
           this.user.matricule.toLocaleLowerCase();

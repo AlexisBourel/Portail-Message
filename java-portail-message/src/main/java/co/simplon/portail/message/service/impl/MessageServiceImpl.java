@@ -1,18 +1,11 @@
 package co.simplon.portail.message.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github.javafaker.Faker;
-
 import co.simplon.portail.message.exception.ResourceNotFoundException;
 import co.simplon.portail.message.model.Message;
-import co.simplon.portail.message.model.Tour;
-import co.simplon.portail.message.model.User;
 import co.simplon.portail.message.repository.MessageRepository;
 import co.simplon.portail.message.service.MessageService;
 import co.simplon.portail.message.service.TourService;
@@ -35,9 +28,6 @@ public class MessageServiceImpl implements MessageService{
 	 */
 	@Override
 	public List<Message> getAll() {
-		if(repository.findAll().isEmpty()) {
-			populateDbWithMockedMessages();
-		}
 		return repository.findAll();
 	}
 	/*
@@ -76,41 +66,6 @@ public class MessageServiceImpl implements MessageService{
 	@Override
 	public void delete(Message message) {		
 		repository.delete(message);
-	}
-	
-	private Message mockMessage(String titre, String type) {
-		Faker faker = new Faker();
-		List<User> users = userService.getAll();
-		List<Tour> tours = tourService.getAll();
-		Message message = new Message();
-		message.setTitle(titre);
-		message.setAutor(users.get(new Random().nextInt(users.size())));
-		message.setTour(tours.get(new Random().nextInt(tours.size())));
-		message.setContent(faker.lorem().toString());	
-		message.setType(type);
-		return message;
-	}
-	
-	private void populateDbWithMockedMessages() {
-		List<Message> mockedMessages = new ArrayList<>();
-		mockedMessages.add(mockMessage("Message Test", "Test"));
-		mockedMessages.add(mockMessage("Commande Mme Dupont", "Commande"));
-		mockedMessages.add(mockMessage("Travaux rue du Séminaire", "Travaux"));
-		mockedMessages.add(mockMessage("Entreprise X fermée", "Fermeture"));
-		mockedMessages.add(mockMessage("Incident sur la tournée", "Incident"));
-		mockedMessages.add(mockMessage("Accès Vigik en panne", "Incident"));
-		mockedMessages.add(mockMessage("Gardien en vacance", "Fermeture"));
-		mockedMessages.add(mockMessage("Message fake 1", "message"));
-		mockedMessages.add(mockMessage("Message fake 2", "message"));
-		mockedMessages.add(mockMessage("Message fake 3", "message"));
-		mockedMessages.add(mockMessage("Message fake 4", "message"));
-		mockedMessages.add(mockMessage("Message fake 5", "message"));
-		mockedMessages.add(mockMessage("Message fake 6", "message"));
-		mockedMessages.add(mockMessage("Message fake 7", "message"));
-		mockedMessages.add(mockMessage("Message fake 8", "message"));
-		mockedMessages.add(mockMessage("Message fake 9", "message"));
-		mockedMessages.add(mockMessage("Message fake 10", "message"));
-		repository.saveAll(mockedMessages);
 	}
 
 }

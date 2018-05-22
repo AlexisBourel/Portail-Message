@@ -1,5 +1,5 @@
 <div class="center">
-  <h3>Nouvel *Utilisateur</h3>
+  <h3>Nouvel Utilisateur</h3>
   <div [hidden]="submitted">
     <form (ngSubmit)="createUser()">
       <div class="formGroup">
@@ -9,12 +9,12 @@
       </div>
       <div class="formGroup">
         <mat-form-field>
-          <input matInput placeholder="Nom" [(ngModel)]="user.lastName" name="lastName" required>
+          <input matInput placeholder="Nom" [(ngModel)]="user.lastname" name="lastname" required>
         </mat-form-field>
       </div>
       <div class="formGroup">
         <mat-form-field>
-          <input matInput placeholder="Prénom" [(ngModel)]="user.firstName" name="firstName" required>
+          <input matInput placeholder="Prénom" [(ngModel)]="user.firstname" name="firstname" required>
         </mat-form-field>
       </div>
       <div class="formGroup">
@@ -46,12 +46,7 @@
   </div>
 
   <div [hidden]="!submitted">
-    <div class="formGroup">
-      <h4>Création du Message réussi</h4>
-    </div>
-    <div class="button-group">
-      <button mat-raised-button (click)="reload()">Nouveau Message</button>
-      <button mat-raised-button routerLink="back">Liste des Messages</button>
-    </div>
+    <h4>Création du Message réussi</h4>
+    <button mat-raised-button routerLink="back">Liste des Messages</button>
   </div>
 </div>

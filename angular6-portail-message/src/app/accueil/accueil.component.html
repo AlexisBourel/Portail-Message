@@ -1,2 +1,5 @@
 <h1 class="center">Bienvenu dans l'application Portail-Message<H1>
 <p>{{ currentUser.matricule }}</p>
+<button mat-raised-button (click)="importData()">Générer les data</button>
+
+<div [hidden]="!dataImported" class="red">Importation réussie</div>
