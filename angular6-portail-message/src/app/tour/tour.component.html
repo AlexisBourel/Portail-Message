@@ -1,23 +1,19 @@
-<div class = "center">
-  <div class="main-menu">
-    <label>Choix de tournée(s)</label>
-  </div>
-  <div class="main-menu">
-    <button (ngClick)="refresh()">
-      <i class="material-icons">refresh</i>
-    </button>
-    <label class="titre-menu">RUNGIS PPDC</label>
-    <button class="fake">
-      <i class="material-icons">
-        home
-      </i>
-    </button>
-  </div>
-  <div class="liste-tours">
-    <ul class="tours">
-      <li *ngFor="let tour of tours" [class.selected]="tour === selectedTour" (click)="onSelect(tour)">
-        <span>{{tour.name}}</span>
-      </li>
-    </ul>
+<div class="center">
+  <h1>Séléction de la Tournée</h1>
+  <mat-table #table [(dataSource)]="dataSource">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Clicker pour avoir les messages</mat-header-cell>
+      <mat-cell *matCellDef="let tour" routerLink="{{tour.id}}"> {{ tour.name }} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="5" [pageSize]="10" [pageSizeOptions]="[10, 20, 30]">
+  </mat-paginator>
+  <div *ngIf="selectedTour">
+    <h2>{{ selectedTour.name | uppercase }} Details</h2>
+    <label>name:
+      <input [(ngModel)]="selectedTour.name" placeholder="name">
+    </label>
   </div>
 </div>

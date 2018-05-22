@@ -53,7 +53,7 @@ export class AuthentificationComponent implements OnInit {
   goToSupervision(){
     console.log('Administrateur détécté');
     console.log('redirect to supervision');
-    this.router.navigate(['portail-message/supervision']);
+    this.router.navigate(['portail-message/supervision/accueil']);
   };
 
   goToSelectTours(){

@@ -16,7 +16,7 @@ import { SupervisionComponent } from './supervision/supervision.component';
 import { NavComponent } from './nav/nav.component';
 import { IndexComponent } from './index/index.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
-import { AccueilComponent } from './accueil/accueil.component';
+import { AccueilComponent } from './supervision/accueil/accueil.component';
 import { CreateMessageComponent } from './message/create-message/create-message.component';
 import { UpdateMessageComponent } from './message/update-message/update-message.component';
 import { MessageService } from './services/message.service';
@@ -25,6 +25,7 @@ import { UserService } from './services/user.service';
 import { ListUserComponent } from './user/list-user/list-user.component';
 import { CreateUserComponent } from './user/create-user/create-user.component';
 import { UpdateUserComponent } from './user/update-user/update-user.component';
+import { TourMessageComponent } from './tour/tour-message/tour-message.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UpdateUserComponent } from './user/update-user/update-user.component';
     UpdateMessageComponent,
     ListUserComponent,
     CreateUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    TourMessageComponent
     
   ],
   imports: [

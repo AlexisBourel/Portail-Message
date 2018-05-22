@@ -34,7 +34,7 @@ public class MessageServiceImpl implements MessageService{
 	 * récupère tous les messages d'une tournée
 	 */
 	@Override
-	public List<Message> getAllTourMessages(String id){
+	public List<Message> getAllTourMessages(long id){
 		return repository.findTourMessages(id);
 		
 	}

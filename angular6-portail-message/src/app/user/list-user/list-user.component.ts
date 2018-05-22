@@ -15,7 +15,6 @@ export class ListUserComponent implements OnInit {
   private users: User[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-
   constructor(private userService: UserService) { }
 
   ngOnInit() {

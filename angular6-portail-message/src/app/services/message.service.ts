@@ -28,6 +28,13 @@ export class MessageService {
     const url = `${this.messageUrl}/${id}`;
     return this.http.get<Message>(url);
   }
+
+  getAllTourMessages(id: number): Observable<Message[]> {
+    console.log("message.service::getAllTourMessages called");
+    const result = this.http.get<Message[]>(this.messageUrl + "/tour/" + id);
+    console.log("message.service::getAllTourMessages succes");
+    return result;
+  }
   
   public create(message: Message): Observable<Message>{
     console.log("message.service:::create Message called");

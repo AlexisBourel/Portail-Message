@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
-import { User } from '../models/user';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { MessageService } from '../services/message.service';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-accueil',

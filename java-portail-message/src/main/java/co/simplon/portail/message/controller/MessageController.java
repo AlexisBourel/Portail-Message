@@ -43,6 +43,11 @@ public class MessageController {
 		return ResponseEntity.ok().body(result);
 	}
 
+	@GetMapping("/tour/{id}")
+	public ResponseEntity<?> getAllMessageForTourById(@PathVariable(value = "id") long id) {
+		return ResponseEntity.ok().body(messageService.getAllTourMessages(id));
+	}
+
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getOneById(@PathVariable(value = "id") long id) {
 		return ResponseEntity.ok().body(messageService.getOneById(id));
@@ -55,7 +60,6 @@ public class MessageController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@PathVariable(value = "id") long id, @Valid @RequestBody Message messageForm) {
-		System.out.println("Message Controller Put mapping entrée");
 		Message messageToUpdate = messageService.getOneById(id);
 		messageToUpdate.setContent(messageForm.getContent());
 		messageToUpdate.setTitle(messageForm.getTitle());
@@ -65,9 +69,7 @@ public class MessageController {
 		if (messageForm.getExpiryDate() != null) {
 			messageToUpdate.setExpiryDate(messageForm.getExpiryDate());
 		}
-		ResponseEntity<Message> result = ResponseEntity.ok().body(messageService.update(messageToUpdate));
-		System.out.println("Message controller put mapping sortie");
-		return result;
+		return ResponseEntity.ok().body(messageService.update(messageToUpdate));
 	}
 
 	@DeleteMapping("/{id}")

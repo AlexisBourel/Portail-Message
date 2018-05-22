@@ -16,6 +16,6 @@ public interface MessageService {
 
 	void delete(Message message);
 
-	List<Message> getAllTourMessages(String id);
+	List<Message> getAllTourMessages(long id);
 
 }

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormGroup, FormBuilder } from '@angular/forms';
 import { Tour } from '../models/tour';
 import { TourService } from '../services/tour.service';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { Router } from '@angular/router';
 
 
 
@@ -12,18 +14,27 @@ import { TourService } from '../services/tour.service';
 })
 export class TourComponent implements OnInit {
   
-  tours: Tour[];
+  private dataSource = new MatTableDataSource();
+  private displayedColumns = ['name'];
+  private tours: Tour[];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedTour: Tour;
 
-  constructor(private tourService: TourService) { }
+  constructor(private tourService: TourService, private router: Router) { }
 
   ngOnInit() {
     this.getTours();
   }
 
-  getTours(): void {
-    this.tourService.getAll()
-        .subscribe(tours => this.tours = tours);
+  private getTours(): void {
+    this.tourService.getAll().subscribe(
+      data => {
+      this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+        console.log(data);
+        console.log("tours loaded");
+      }
+    );
   }
 
   refresh(): void {    
@@ -34,6 +45,8 @@ export class TourComponent implements OnInit {
   onSelect(tour: Tour) {
     this.selectedTour = tour;
     console.log(this.selectedTour.name);
+    console.log('navigate to tournée with id : ' + this.selectedTour.id);
+    this.router.navigate(["tournee/" + this.selectedTour.id]);
   }
 
 }

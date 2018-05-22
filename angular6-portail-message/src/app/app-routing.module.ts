@@ -5,7 +5,7 @@ import { SupervisionComponent } from './supervision/supervision.component';
 import { IndexComponent } from './index/index.component';
 import { NavComponent } from './nav/nav.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
-import { AccueilComponent } from './accueil/accueil.component';
+import { AccueilComponent } from './supervision/accueil/accueil.component';
 import { MessageComponent } from './message/message.component';
 import { CreateMessageComponent } from './message/create-message/create-message.component';
 import { UpdateMessageComponent } from './message/update-message/update-message.component';
@@ -13,6 +13,7 @@ import { UserComponent } from './user/user.component';
 import { ListUserComponent } from './user/list-user/list-user.component';
 import { CreateUserComponent } from './user/create-user/create-user.component';
 import { UpdateUserComponent } from './user/update-user/update-user.component';
+import { TourMessageComponent } from './tour/tour-message/tour-message.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'portail-message/authentification', pathMatch: 'full' },
@@ -29,8 +30,9 @@ const routes: Routes = [
         { path: 'list', component: ListUserComponent },
         { path: 'nouveau', component: CreateUserComponent },
         { path: 'modifier/:id', component: UpdateUserComponent },
-      ] },
-      { path: 'tour', component: TourComponent },
+      ] },      
+      { path: 'tournee', component: TourComponent },
+      { path: 'tournee/:id', component: TourMessageComponent },
       { path: 'message', component: MessageComponent, },
       { path: 'message/nouveau', component: CreateMessageComponent },
       { path: 'message/modifier/:id', component: UpdateMessageComponent },

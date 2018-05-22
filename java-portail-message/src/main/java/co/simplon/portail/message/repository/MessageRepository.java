@@ -11,5 +11,5 @@ import co.simplon.portail.message.model.Message;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long>{
 	@Query(value = "SELECT m FROM Message m WHERE m.tour.id  = :id") //requete HQL personnalisée pour récupérer les message d'une tournée
-	public List<Message> findTourMessages(String id);
+	public List<Message> findTourMessages(long id);
 }

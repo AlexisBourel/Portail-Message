@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.simplon.portail.message.model.Tour;
 import co.simplon.portail.message.service.impl.TourServiceImpl;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/tour")
 public class TourController {
@@ -24,20 +25,18 @@ public class TourController {
 	TourServiceImpl tourService;
 	
 	// Récupèrer tous les messages
-	@CrossOrigin
+	
 	@GetMapping
 	public List<Tour> getAll() {
 		return tourService.getAll();
 	}
 	
 	// Récupèrer les messages d'une tournée
-	@CrossOrigin
 	@GetMapping("/{id}")
 	public Tour getOneById(@PathVariable(value="id") long id) {
 		return tourService.getOneById(id);	
 	}
-	
-	@CrossOrigin
+		
 	@PutMapping("/{id}")
 	public Tour update(@PathVariable(value="id") long id, @Valid @RequestBody Tour tourForm) {		
 		Tour tourToUpdate = tourService.getOneById(id);
