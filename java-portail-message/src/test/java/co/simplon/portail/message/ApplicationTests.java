@@ -1,4 +1,4 @@
-package co.simplon.portail.messages;
+package co.simplon.portail.message;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
