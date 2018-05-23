@@ -12,10 +12,11 @@ public class Message extends AuditModel {
 	 */
 	private static final long serialVersionUID = -1025223523728208763L;
 
+	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-	
 	@Column(nullable=false, unique=true, length=25)
     private String title;
     @Lob
@@ -27,7 +28,21 @@ public class Message extends AuditModel {
     @JoinColumn(name="tour_id",nullable = false)
     private Tour tour;
     @Column(nullable=false, length=30)
-    private String type;    
+    private String type;  
+    
+    public Message() {
+		super();
+	}
+    
+    public Message(long id, String title, String content, Date expiryDate, Tour tour, String type) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.expiryDate = expiryDate;
+		this.tour = tour;
+		this.type = type;
+	}
 
 	public long getId() {
 		return id;

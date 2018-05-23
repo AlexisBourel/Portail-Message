@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,7 +37,7 @@ public class MessageController {
 	@GetMapping
 	public ResponseEntity<List<Message>> getAll() {
 		List<Message> result = messageService.getAll();
-		if (result.isEmpty()) {
+		if (result == null || result.isEmpty()) {
 			mockService.populateDbWithMockedData();
 			result = messageService.getAll();
 		}
@@ -54,7 +55,10 @@ public class MessageController {
 	}
 
 	@PostMapping
-	public ResponseEntity<?> create(@Valid @RequestBody Message message) {
+	public ResponseEntity<Message> create(@Valid @RequestBody Message message) {
+		if (messageService.exists(message)) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body(message);
+		}
 		return ResponseEntity.ok().body(messageService.create(message));
 	}
 

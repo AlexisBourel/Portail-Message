@@ -18,4 +18,8 @@ public interface MessageService {
 
 	List<Message> getAllTourMessages(long id);
 
+	Message findByTitle(String title);
+
+	boolean exists(Message message);
+
 }
