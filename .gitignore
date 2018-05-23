@@ -1,4 +1,4 @@
-/target/
+java-portail-message/target/
 !.mvn/wrapper/maven-wrapper.jar
 application.properties
 
