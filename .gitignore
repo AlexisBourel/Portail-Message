@@ -1,6 +1,6 @@
 java-portail-message/target/
+java-portail-message/src/main/resources/application.properties
 !.mvn/wrapper/maven-wrapper.jar
-application.properties
 
 ### STS ###
 .apt_generated
